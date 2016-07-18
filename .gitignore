@@ -1,0 +1,4 @@
+node_modules/
+scrape.py
+**/pokemon/
+**/pokemon.json

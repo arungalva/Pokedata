@@ -1,1 +1,1 @@
-# pokeGoDex
+# pokemonGoDex
