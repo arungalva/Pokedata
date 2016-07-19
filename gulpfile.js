@@ -5,8 +5,7 @@ var sass = require('gulp-sass');
 var rename = require('gulp-rename');
 
 var paths = {
-  sass: ['./scss/**/*.scss'],
-  coffee: ['./www/**/*.coffee']
+  sass: ['./scss/**/*.scss']
 };
 
 
@@ -26,5 +25,4 @@ gulp.task('sass', function(done) {
 
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
-  gulp.watch(paths.coffee, ['coffee']);
 });
