@@ -1,7 +1,33 @@
-<ion-view view-title="{{pokemonInfo.name}}">
-  <ion-content>
-    <div class="table-responsive">
-      <img src="{{pokemonInfo.img}}" />
-    </div>
-  </ion-content>
+<ion-view title="{{pokemonInfo.name}}">
+  <ion-pane>
+    <ion-tabs class="tabs-assertive tabs-top tabs-icon-only">
+      <ion-tab title="pokemonInfo" icon="ion-ios-home">
+        <ion-nav-view name="info-tab"></ion-nav-view>
+          <ion-content class="padding">
+            <img src="{{pokemonInfo.img}}" />
+          </ion-content>
+      </ion-tab>
+
+      <ion-tab title="pokemonCounters" icon="ion-pizza">
+        <ion-nav-view name="pokemon-counters-tab"></ion-nav-view>
+        <ion-content class="padding">
+          <h1>Pokemon Counters</h1>
+        </ion-content>
+      </ion-tab>
+
+      <ion-tab title="pokemonAttacks" icon="ion-email">
+        <ion-nav-view name="pokemon-attacks-tab"></ion-nav-view>
+          <ion-content class="padding">
+            <h1>Pokemon Attacks</h1>
+          </ion-content>
+      </ion-tab>
+      <ion-tab title="pokemonEvolutions" icon="ion-email">
+        <ion-nav-view name="pokemon-evolutions-tab"></ion-nav-view>
+          <ion-content class="padding">
+            <h1>Pokemon Evolutions</h1>
+          </ion-content>
+      </ion-tab>
+    </ion-tabs>
+
+  </ion-pane>
 </ion-view>

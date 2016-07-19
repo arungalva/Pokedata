@@ -24,4 +24,4 @@ angular.module('pokemon.controllers', [])
         $scope.pokemonInfo = response.data[parseInt($stateParams.pokemonId)-1];
       });
     });
-  });
+  })
