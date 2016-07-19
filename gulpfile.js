@@ -11,7 +11,7 @@ var paths = {
 
 
 gulp.task('sass', function(done) {
-  gulp.src('./scss/**/*.scss')
+  gulp.src('./scss/app.scss')
     .pipe(sass({
       outputStyle: 'compressed'
     }))
