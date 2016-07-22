@@ -12,7 +12,7 @@ var paths = {
 gulp.task('sass', function(done) {
   gulp.src('./scss/app.scss')
     .pipe(sass({
-      outputStyle: 'compressed'
+      //outputStyle: 'compressed'
     }))
     .on('error', sass.logError)
     .pipe(gulp.dest('./www/css/'))
