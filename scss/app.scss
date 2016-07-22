@@ -1,4 +1,12 @@
+@import 'overrides';
+@import 'pokemon-ui/pokemon';
+html {
+  font-size: $font-size-root;
+}
 img {
-  max-width: 100%;
-  max-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+.view-container {
+    background: #eceff1 !important;
 }
