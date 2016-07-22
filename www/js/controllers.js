@@ -1,27 +1,39 @@
 angular.module('pokemon.controllers', [])
-  .controller('PokemonCtrl', function($scope, Pokemon,$ionicFilterBar) {
-    $scope.allPokemon=[];
+  .controller('PokemonCtrl', function($scope, Pokemon, $ionicFilterBar) {
+    $scope.allPokemon = [];
     images = [];
     Pokemon.all().then(function(response) {
       images = response.data;
       $scope.pokemon = images;
     });
 
-    $scope.showFilterBar = function () {
+    $scope.showFilterBar = function() {
       filterBarInstance = $ionicFilterBar.show({
-        items: $scope.pokemon ,
-        update: function (filteredItems) {
-          $scope.pokemon   = filteredItems;
+        items: $scope.pokemon,
+        update: function(filteredItems) {
+          $scope.pokemon = filteredItems;
         },
         filterProperties: 'name'
       });
     };
 
   })
-  .controller('pokemonDetailCtrl', function($scope,$ionicLoading,$stateParams,Pokemon) {
+  .controller('pokemonDetailCtrl', function($scope, $ionicLoading, $stateParams, Pokemon) {
+
+    $ionicLoading.show({
+      content: 'Loading',
+      animation: 'fade-in',
+      showBackdrop: true,
+      maxWidth: 200,
+      showDelay: 0
+    });
+
     $scope.$on('$ionicView.enter', function() {
       Pokemon.all().then(function(response) {
-        $scope.pokemonInfo = response.data[parseInt($stateParams.pokemonId)-1];
+        data = response.data[parseInt($stateParams.pokemonId) - 1];
+        $scope.pokemonInfo = response.data[parseInt($stateParams.pokemonId) - 1];
+        $ionicLoading.hide();
       });
     });
+
   });
