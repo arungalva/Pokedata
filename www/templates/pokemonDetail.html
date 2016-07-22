@@ -98,10 +98,70 @@
                     <h1>Pokemon Attacks</h1>
                 </ion-content>
             </ion-tab>
-            <ion-tab title="Evolutions">
+            <ion-tab title="Evolutions" ng-if="pokemonInfo.nextEvolutions || pokemonInfo.previousEvolutions">
                 <ion-nav-view name="pokemon-evolutions-tab"></ion-nav-view>
                 <ion-content class="padding">
-                    <h1>Pokemon Evolutions</h1>
+                  <div class="row" ng-if="pokemonInfo.nextEvolutionRequirements">
+                    <b>Next Evolution   :</b> {{pokemonInfo.nextEvolutionRequirements}}
+                  </div>
+                  <div ng-repeat="pokemon in pokemonInfo.previousEvolutions">
+                    <a href="#/pokemon/{{allPokemon[pokemon-1].number}}" ng-if="pokemonInfo.previousEvolutions">
+                      <div class="card" ng-if="pokemonInfo.previousEvolutions">
+                        <div class="item item-divider">
+                          Previous Evolution ({{allPokemon[pokemon-1].name}})
+                        </div>
+                        <div class="item item-text-wrap row">
+                          <div class="col col-50">
+                            <a href="#/pokemon/{{allPokemon[pokemon-1].number}}"><img src="{{allPokemon[pokemon-1].img}}"/></a>
+                          </div>
+                          <div class="col col-50 list bold">
+                            <div class="item item-text-wrap">
+                                <p>
+                                  Name
+                                </p>
+                                {{allPokemon[pokemon-1].name}}
+                            </div>
+                            <div class="item item-text-wrap">
+                              <p>
+                                Max CP
+                              </p>
+                                {{allPokemon[pokemon-1].maxCP}}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                <div ng-repeat="pokemon in pokemonInfo.nextEvolutions">
+                  <a href="#/pokemon/{{allPokemon[pokemon-1].number}}" ng-if="pokemonInfo.nextEvolutions">
+                    <div class="card animated infinite tada">
+                      <div class="item item-divider">
+                        Next Evolution ({{allPokemon[pokemon-1].name}})
+                      </div>
+                      <div class="item item-text-wrap row">
+                        <div class="col col-50">
+                          <img src="{{allPokemon[pokemon-1].img}}"/>
+                        </div>
+                        <div class="col col-50 list bold">
+                          <div class="item item-text-wrap">
+                              <p>
+                                Name
+                              </p>
+                              {{allPokemon[pokemon-1].name}}
+                          </div>
+                          <div class="item item-text-wrap">
+                            <p>
+                              Max CP
+                            </p>
+                            {{allPokemon[pokemon-1].maxCP}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
                 </ion-content>
             </ion-tab>
         </ion-tabs>

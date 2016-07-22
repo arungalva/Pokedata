@@ -43,3 +43,7 @@ img.pokemon-img{
 .bold{
   font-weight: bold;
 }
+
+a{
+  text-decoration: none;
+}

@@ -23,11 +23,7 @@ angular.module('pokemon.controllers', [])
       Pokemon.all().then(function(response) {
         data = response.data[parseInt($stateParams.pokemonId)-1];
         $scope.pokemonInfo = response.data[parseInt($stateParams.pokemonId)-1];
-        // delete data["weaknesses"]
-        // delete data["weakAgainst"]
-        // delete data["strongAgainst"]
-        // delete data["weaknesses"]
-        // delete data["weaknesses"]
+        $scope.allPokemon = response.data;
       });
     });
   })
