@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 angular.module('pokemon.controllers', [])
   .controller('PokemonCtrl', function($scope, Pokemon, $ionicFilterBar) {
     $scope.allPokemon = [];
@@ -37,4 +39,20 @@ angular.module('pokemon.controllers', [])
       });
     });
 
+  })
+
+.controller('AttacksCtrl', function($scope, $ionicLoading, attacks) {
+
+  $ionicLoading.show({
+    content: 'Loading',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
   });
+
+  attacks.all().then(function(res) {
+    $scope.attacks = Object.keys(res.data).map(key => res.data[key]);
+    $ionicLoading.hide();
+  });
+});
