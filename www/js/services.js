@@ -11,10 +11,12 @@ angular.module('pokemon.services', [])
   };
 })
 
-.factory('attacks', function($http) {
+.factory('PokemonAttacks', function($http) {
+  // NOTE: data is actually a Promise object
+  data = $http.get('./static/attacks.json');
   return {
     all: function() {
-      return $http.get('./static/attacks.json');
+      return data;
     }
   };
 });
