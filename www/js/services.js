@@ -9,4 +9,12 @@ angular.module('pokemon.services', [])
       });
     },
   };
+})
+
+.factory('attacks', function($http) {
+  return {
+    all: function() {
+      return $http.get('./static/attacks.json');
+    }
+  };
 });
