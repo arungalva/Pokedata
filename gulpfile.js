@@ -1,8 +1,8 @@
 var gulp = require('gulp');
 var bower = require('bower');
 var concat = require('gulp-concat');
+var cleanCSS = require('gulp-clean-css');
 var sass = require('gulp-sass');
-var rename = require('gulp-rename');
 
 var paths = {
   sass: ['./scss/**/*.scss']
@@ -12,13 +12,10 @@ var paths = {
 gulp.task('sass', function(done) {
   gulp.src('./scss/app.scss')
     .pipe(sass({
-      //outputStyle: 'compressed'
+      // outputStyle: 'compressed'
     }))
     .on('error', sass.logError)
     .pipe(gulp.dest('./www/css/'))
-    .pipe(rename({
-      extname: '.min.css'
-    }))
     .pipe(gulp.dest('./www/css/'))
     .on('end', done);
 });

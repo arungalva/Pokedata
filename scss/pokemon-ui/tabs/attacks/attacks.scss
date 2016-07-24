@@ -1,0 +1,18 @@
+.right {
+    float: right;
+}
+table {
+    width: 100%;
+    td {
+        padding: 0 8px;
+    }
+    td:nth-child(even) {
+        float: right;
+    }
+    td:nth-child(odd) {
+        float: left;
+    }
+}
+#sub {
+    font-size: 1.0rem;
+}
