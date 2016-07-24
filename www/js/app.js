@@ -34,6 +34,10 @@ angular.module('pokemon', ['ionic', 'pokemon.controllers', 'pokemon.services', '
       url: '/pokemon/:pokemonId',
       templateUrl: 'templates/pokemonDetail.html',
       controller: 'pokemonDetailCtrl'
+    })
+    .state('about', {
+      url: '/about',
+      templateUrl: 'templates/about.html'
     });
   $urlRouterProvider.otherwise("/pokemon/");
 
