@@ -94,15 +94,21 @@
                       Strong Against
                     </div>
                     <ion-list>
-                      <div class="item item-text-wrap row center" ng-repeat="pokemon in pokemonInfo.strongAgainst" ng-if="$index%3==0&&$index<5">
+                      <div class="item item-text-wrap row center" ng-repeat="pokemon in pokemonInfo.weakAgainst" ng-if="$index%3==0&&$index<pokemonInfo.weakAgainst.length%3+2">
                         <div class="col col-33">
-                          <a href="#/pokemon/{{allPokemon[pokemonInfo.strongAgainst[$index]-1].number}}"><img src="{{allPokemon[pokemonInfo.strongAgainst[$index]-1].img}}" /></a>{{allPokemon[pokemonInfo.strongAgainst[$index]-1].name}}
+                          <a href="#/pokemon/{{allPokemon[pokemonInfo.weakAgainst[$index]-1].number}}"><img src="{{allPokemon[pokemonInfo.weakAgainst[$index]-1].img}}" /></a><p>
+                            {{allPokemon[pokemonInfo.weakAgainst[$index]-1].name}}
+                          </p>
                         </div>
                         <div class="col col-33">
-                          <a href="#/pokemon/{{allPokemon[pokemonInfo.strongAgainst[$index+1]-1].number}}"><img src="{{allPokemon[pokemonInfo.strongAgainst[$index+1]-1].img}}" /></a>{{allPokemon[pokemonInfo.strongAgainst[$index+1]-1].name}}
+                          <a href="#/pokemon/{{allPokemon[pokemonInfo.weakAgainst[$index+1]-1].number}}"><img src="{{allPokemon[pokemonInfo.weakAgainst[$index+1]-1].img}}" /></a><p>
+                            {{allPokemon[pokemonInfo.weakAgainst[$index+1]-1].name}}
+                          </p>
                         </div>
                         <div class="col col-33">
-                          <a href="#/pokemon/{{allPokemon[pokemonInfo.strongAgainst[$index+2]-1].number}}"><img src="{{allPokemon[pokemonInfo.strongAgainst[$index+2]-1].img}}" /></a> {{allPokemon[pokemonInfo.strongAgainst[$index+2]-1].name}}
+                          <a href="#/pokemon/{{allPokemon[pokemonInfo.weakAgainst[$index+2]-1].number}}"><img src="{{allPokemon[pokemonInfo.weakAgainst[$index+2]-1].img}}" /></a> <p>
+                            {{allPokemon[pokemonInfo.weakAgainst[$index+2]-1].name}}
+                          </p>
                         </div>
                       </div>
                     </ion-list>
@@ -113,16 +119,23 @@
                       Weak Against
                     </div>
                     <ion-list>
-                      <div class="item item-text-wrap row" ng-repeat="pokemon in pokemonInfo.weakAgainst" ng-if="$index%3==0&&$index<2">
+                      <div class="item item-text-wrap row center" ng-repeat="pokemon in pokemonInfo.strongAgainst" ng-if="$index%3==0&&$index<5">
+                        {{pokemonInfo.strongAgainst.length}}
                         <div class="col col-33">
-                          <img src="{{allPokemon[pokemonInfo.weakAgainst[$index]-1].img}}" />{{allPokemon[pokemonInfo.weakAgainst[$index]-1].name}}
+                          <img src="{{allPokemon[pokemonInfo.strongAgainst[$index]-1].img}}" /><p>
+                            {{allPokemon[pokemonInfo.strongAgainst[$index]-1].name}}
+                          </p>
                         </div>
                         <div class="col col-33">
-                          <img src="{{allPokemon[pokemonInfo.weakAgainst[$index+1]-1].img}}" />{{allPokemon[pokemonInfo.weakAgainst[$index+1]-1].name}}
+                          <img src="{{allPokemon[pokemonInfo.strongAgainst[$index+1]-1].img}}" /><p>
+                            {{allPokemon[pokemonInfo.strongAgainst[$index+1]-1].name}}
+                          </p>
                         </div>
                         <div class="col col-33">
-                          <img src="{{allPokemon[pokemonInfo.weakAgainst[$index+2]-1].img}}" />
-                          {{allPokemon[pokemonInfo.weakAgainst[$index+2]-1].name}}
+                          <img src="{{allPokemon[pokemonInfo.strongAgainst[$index+2]-1].img}}" />
+                          <p>
+                            {{allPokemon[pokemonInfo.strongAgainst[$index+2]-1].name}}
+                          </p>
                         </div>
                       </div>
                     </ion-list>
