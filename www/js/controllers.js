@@ -1,9 +1,8 @@
-/* jshint esversion: 6 */
-
 angular.module('pokemon.controllers', [])
   .controller('PokemonCtrl', function($scope, Pokemon, $ionicFilterBar) {
-    $scope.allPokemon = [];
     images = [];
+    $scope.allPokemon = [];
+    $scope.title = "PokéGoDex";
     Pokemon.all().then(function(response) {
       images = response.data;
       $scope.pokemon = images;
