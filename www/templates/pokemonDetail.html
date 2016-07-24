@@ -120,7 +120,6 @@
                     </div>
                     <ion-list>
                       <div class="item item-text-wrap row center" ng-repeat="pokemon in pokemonInfo.strongAgainst" ng-if="$index%3==0&&$index<5">
-                        {{pokemonInfo.strongAgainst.length}}
                         <div class="col col-33">
                           <img src="{{allPokemon[pokemonInfo.strongAgainst[$index]-1].img}}" /><p>
                             {{allPokemon[pokemonInfo.strongAgainst[$index]-1].name}}
