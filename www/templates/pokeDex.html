@@ -4,10 +4,10 @@
     </button>
   </ion-nav-buttons>
   <ion-content>
-    <div class="row" ng-repeat=" (key, image) in pokemon" ng-if="$index%3==0">
-        <div class="col col-33"><a href="#/pokemon/{{pokemon[key].number}}"><img src="../{{pokemon[key].img}}" alt="" /></a></div>
-        <div class="col col-33"><a href="#/pokemon/{{pokemon[key+1].number}}"><img src="../{{pokemon[key+1].img}}" alt=""></a></div>
-        <div class="col col-33"><a href="#/pokemon/{{pokemon[key+2].number}}"><img src="../{{pokemon[key+2].img}}" alt=""></a></div>
+    <div class="row center" ng-repeat=" (key, image) in pokemon" ng-if="$index%3==0">
+        <div class="col col-33"><a href="#/pokemon/{{pokemon[key].number}}"><img src="../{{pokemon[key].img}}" alt="" /></a>{{pokemon[key].name}}</div>
+        <div class="col col-33"><a href="#/pokemon/{{pokemon[key+1].number}}"><img src="../{{pokemon[key+1].img}}" alt=""></a>{{pokemon[key+1].name}}</div>
+        <div class="col col-33"><a href="#/pokemon/{{pokemon[key+2].number}}"><img src="../{{pokemon[key+2].img}}" alt=""></a>{{pokemon[key+2].name}}</div>
     </div>
   </ion-content>
 </ion-view>
