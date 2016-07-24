@@ -11,7 +11,7 @@
                         <div class="col col-50 pokemon-info-main-right">
                             <p class="pokemon-number">#{{ pokemonInfo.number }}</p>
                             <p class="classification">{{ pokemonInfo.classification }}</p>
-                            <p class="pokemon-type-I {{ pokemonInfo.typeI | lowercase }}">{{ pokemonInfo.typeI }}</p>
+                            <p class="pokemon-type-I {{ pokemonInfo.typeI | lowercase }} type">{{ pokemonInfo.typeI | uppercase }}</p>
                         </div>
                     </div>
                     <div class="list card pokemon-info">
@@ -96,11 +96,74 @@
             <ion-tab title="Attacks">
                 <ion-nav-view name="pokemon-attacks-tab"></ion-nav-view>
                 <ion-content class="padding">
-                    <ion-list ng-controller="AttacksCtrl">
-                        <ion-item ng-repeat="attack in attacks">{{ attack.name }}</ion-item>
-                    </ion-list>
+
+                    <div class="card">
+                        <div class="item item-divider">
+                            Fast Attacks
+                        </div>
+                        <ion-list>
+                            <div ng-repeat="attack in pokemonInfo.fastAttacks">
+                                <ion-item class="item item-text-wrap" ng-click="toggleList(attack)" ng-class="{active: isListShown(attack)}">
+                                    <i class="icon" ng-class="isListShown(attack) ? 'ion-chevron-up' : 'ion-chevron-down'"></i>&nbsp;{{ attacks[attack].name }}
+                                    <span class="right"><b> {{ attacks[attack].damage }}</b><span id="sub">DMG</span> <b>{{ attacks[attack].dps }}</b><span id="sub">DPS</span>
+                                    </span>
+                                </ion-item>
+                                <ion-item class="item-accordion" ng-show="isListShown(attack)">
+                                    <p>Damage: {{ attacks[attack].damage }}</p>
+                                    <p>DPS: {{ attacks[attack].dps }}</p>
+                                    <p>Type: {{ attacks[attack].type }}</p>
+                                    <p>Cooldown: {{ attacks[attack].cooldown }}s</p>
+                                    <p><b>Effective against</b></p>
+                                    <table ng-repeat="(key, val) in attacks[attack].effectiveness">
+                                        <tr>
+                                            <td>
+                                                <p>{{ key | capitalize }}</p>
+                                            </td>
+                                            <td>
+                                                <p>{{ val }}</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </ion-item>
+                        </ion-list>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="item item-divider">
+                            Special Attacks
+                        </div>
+                        <ion-list>
+                            <div ng-repeat="attack in pokemonInfo.specialAttacks">
+                                <ion-item class="item item-text-wrap" ng-click="toggleList(attack)" ng-class="{active: isListShown(attack)}">
+                                    <i class="icon" ng-class="isListShown(attack) ? 'ion-chevron-up' : 'ion-chevron-down'"></i>&nbsp;{{ attacks[attack].name }}
+                                    <span class="right"><b> {{ attacks[attack].damage }}</b><span id="sub">DMG</span> <b>{{ attacks[attack].dps }}</b><span id="sub">DPS</span>
+                                    </span>
+                                </ion-item>
+                                <ion-item class="item-accordion" ng-show="isListShown(attack)">
+                                    <p>Damage: {{ attacks[attack].damage }}</p>
+                                    <p>DPS: {{ attacks[attack].dps }}</p>
+                                    <p>Type: {{ attacks[attack].type }}</p>
+                                    <p>Cooldown: {{ attacks[attack].cooldown }}s</p>
+                                    <p><b>Effective against</b></p>
+                                    <table ng-repeat="(key, val) in attacks[attack].effectiveness">
+                                        <tr>
+                                            <td>
+                                                <p>{{ key | capitalize }}</p>
+                                            </td>
+                                            <td>
+                                                <p>{{ val }}</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </ion-item>
+                        </ion-list>
+                        </div>
+                    </div>
+
                 </ion-content>
             </ion-tab>
+
             <ion-tab title="Evolutions" ng-if="pokemonInfo.nextEvolutions || pokemonInfo.previousEvolutions">
                 <ion-nav-view name="pokemon-evolutions-tab"></ion-nav-view>
                 <ion-content class="padding">
@@ -115,7 +178,7 @@
                                 </div>
                                 <div class="item item-text-wrap row">
                                     <div class="col col-50">
-                                        <a href="#/pokemon/{{ allPokemon[pokemon-1].number }}"><img src="{{ allPokemon[pokemon-1].img }}" /></a>
+                                        <img src="{{ allPokemon[pokemon-1].img }}" />
                                     </div>
                                     <div class="col col-50 list bold">
                                         <div class="item item-text-wrap">
@@ -133,8 +196,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
                     </div>
+                    </a>
 
                     <div ng-repeat="pokemon in pokemonInfo.nextEvolutions">
                         <a href="#/pokemon/{{ allPokemon[pokemon-1].number }}" ng-if="pokemonInfo.nextEvolutions">
