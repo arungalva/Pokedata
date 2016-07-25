@@ -5,7 +5,7 @@ angular.module('pokemon.services', [])
     all: function() {
       return $http({
         method: 'GET',
-        url: '../static/pokemon.json'
+        url: 'static/pokemon.json'
       });
     },
   };
