@@ -1,4 +1,4 @@
-<ion-view title="{{ title }}">
+<ion-view title="{{ title }}" hide-back-button="true">
     <ion-nav-buttons side="secondary">
         <button class="button button-icon icon ion-ios-search-strong" ng-click="showFilterBar()">
         </button>
@@ -15,7 +15,7 @@
             </div>
             <div class="col col-33">
                 <a href="#/pokemon/{{pokemon[key+2].number}}"><img src="../{{pokemon[key+2].img}}" alt=""></a>
-                <p>{{ pokemon[key+3].name }}</p>
+                <p>{{ pokemon[key+2].name }}</p>
             </div>
         </div>
     </ion-content>
