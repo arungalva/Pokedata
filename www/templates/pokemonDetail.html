@@ -1,7 +1,8 @@
 <ion-view title="{{ pokemonInfo.name }}">
-  <ion-nav-buttons side="right">
-    <a href="#/about"><i class="ion-information-circled info-btn"></i></a>
-  </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <a href="/"><i class="ion-home"></i></a>
+        <a href="#/about"><i class="ion-information-circled"></i></a>
+    </ion-nav-buttons>
     <ion-pane>
         <ion-tabs class="tabs-assertive tabs-top">
             <ion-tab title="Pokémon">
@@ -92,62 +93,67 @@
             <ion-tab title="Counters">
                 <ion-nav-view name="pokemon-counters-tab"></ion-nav-view>
                 <ion-content class="padding">
-                  <div class="card">
-                    <div class="item item-divider">
-                      Strong Against
+                    <div class="card">
+                        <div class="item item-divider">
+                            Strong Against
+                        </div>
+                        <ion-list>
+                            <div class="item item-text-wrap row center" ng-repeat="pokemon in pokemonInfo.weakAgainst" ng-if="$index%3==0&&$index<pokemonInfo.weakAgainst.length%3+2">
+                                <div class="col col-33">
+                                    <a href="#/pokemon/{{allPokemon[pokemonInfo.weakAgainst[$index]-1].number}}"><img src="{{allPokemon[pokemonInfo.weakAgainst[$index]-1].img}}" /></a>
+                                    <p>
+                                        {{allPokemon[pokemonInfo.weakAgainst[$index]-1].name}}
+                                    </p>
+                                </div>
+                                <div class="col col-33">
+                                    <a href="#/pokemon/{{allPokemon[pokemonInfo.weakAgainst[$index+1]-1].number}}"><img src="{{allPokemon[pokemonInfo.weakAgainst[$index+1]-1].img}}" /></a>
+                                    <p>
+                                        {{allPokemon[pokemonInfo.weakAgainst[$index+1]-1].name}}
+                                    </p>
+                                </div>
+                                <div class="col col-33">
+                                    <a href="#/pokemon/{{allPokemon[pokemonInfo.weakAgainst[$index+2]-1].number}}"><img src="{{allPokemon[pokemonInfo.weakAgainst[$index+2]-1].img}}" /></a>
+                                    <p>
+                                        {{allPokemon[pokemonInfo.weakAgainst[$index+2]-1].name}}
+                                    </p>
+                                </div>
+                            </div>
+                        </ion-list>
                     </div>
-                    <ion-list>
-                      <div class="item item-text-wrap row center" ng-repeat="pokemon in pokemonInfo.weakAgainst" ng-if="$index%3==0&&$index<pokemonInfo.weakAgainst.length%3+2">
-                        <div class="col col-33">
-                          <a href="#/pokemon/{{allPokemon[pokemonInfo.weakAgainst[$index]-1].number}}"><img src="{{allPokemon[pokemonInfo.weakAgainst[$index]-1].img}}" /></a><p>
-                            {{allPokemon[pokemonInfo.weakAgainst[$index]-1].name}}
-                          </p>
-                        </div>
-                        <div class="col col-33">
-                          <a href="#/pokemon/{{allPokemon[pokemonInfo.weakAgainst[$index+1]-1].number}}"><img src="{{allPokemon[pokemonInfo.weakAgainst[$index+1]-1].img}}" /></a><p>
-                            {{allPokemon[pokemonInfo.weakAgainst[$index+1]-1].name}}
-                          </p>
-                        </div>
-                        <div class="col col-33">
-                          <a href="#/pokemon/{{allPokemon[pokemonInfo.weakAgainst[$index+2]-1].number}}"><img src="{{allPokemon[pokemonInfo.weakAgainst[$index+2]-1].img}}" /></a> <p>
-                            {{allPokemon[pokemonInfo.weakAgainst[$index+2]-1].name}}
-                          </p>
-                        </div>
-                      </div>
-                    </ion-list>
-                  </div>
 
-                  <div class="card">
-                    <div class="item item-divider">
-                      Weak Against
+                    <div class="card">
+                        <div class="item item-divider">
+                            Weak Against
+                        </div>
+                        <ion-list>
+                            <div class="item item-text-wrap row center" ng-repeat="pokemon in pokemonInfo.strongAgainst" ng-if="$index%3==0&&$index<5">
+                                <div class="col col-33">
+                                    <a href="#/pokemon/{{allPokemon[pokemonInfo.strongAgainst[$index]-1].number}}">
+                                        <img src="{{allPokemon[pokemonInfo.strongAgainst[$index]-1].img}}" />
+                                        <p>
+                                            {{allPokemon[pokemonInfo.strongAgainst[$index]-1].name}}
+                                        </p>
+                                    </a>
+                                </div>
+                                <div class="col col-33">
+                                    <a href="#/pokemon/{{allPokemon[pokemonInfo.strongAgainst[$index+1]-1].number}}">
+                                        <img src="{{allPokemon[pokemonInfo.strongAgainst[$index+1]-1].img}}" />
+                                        <p>
+                                            {{allPokemon[pokemonInfo.strongAgainst[$index+1]-1].name}}
+                                        </p>
+                                    </a>
+                                </div>
+                                <div class="col col-33">
+                                    <a href="#/pokemon/{{allPokemon[pokemonInfo.strongAgainst[$index+2]-1].number}}">
+                                        <img src="{{allPokemon[pokemonInfo.strongAgainst[$index+2]-1].img}}" />
+                                        <p>
+                                            {{allPokemon[pokemonInfo.strongAgainst[$index+2]-1].name}}
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                        </ion-list>
                     </div>
-                    <ion-list>
-                      <div class="item item-text-wrap row center" ng-repeat="pokemon in pokemonInfo.strongAgainst" ng-if="$index%3==0&&$index<5">
-                        <div class="col col-33">
-                          <a href="#/pokemon/{{allPokemon[pokemonInfo.strongAgainst[$index]-1].number}}">
-                          <img src="{{allPokemon[pokemonInfo.strongAgainst[$index]-1].img}}" /><p>
-                            {{allPokemon[pokemonInfo.strongAgainst[$index]-1].name}}
-                          </p>
-                          </a>
-                        </div>
-                        <div class="col col-33">
-                        <a href="#/pokemon/{{allPokemon[pokemonInfo.strongAgainst[$index+1]-1].number}}">
-                          <img src="{{allPokemon[pokemonInfo.strongAgainst[$index+1]-1].img}}" /><p>
-                            {{allPokemon[pokemonInfo.strongAgainst[$index+1]-1].name}}
-                          </p>
-                        </a>
-                        </div>
-                        <div class="col col-33">
-                          <a href="#/pokemon/{{allPokemon[pokemonInfo.strongAgainst[$index+2]-1].number}}">
-                          <img src="{{allPokemon[pokemonInfo.strongAgainst[$index+2]-1].img}}" />
-                          <p>
-                            {{allPokemon[pokemonInfo.strongAgainst[$index+2]-1].name}}
-                          </p>
-                        </a>
-                        </div>
-                      </div>
-                    </ion-list>
-                  </div>
 
                 </ion-content>
             </ion-tab>
