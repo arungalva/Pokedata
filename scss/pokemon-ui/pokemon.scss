@@ -1,6 +1,17 @@
 @import 'tabs/tabs';
 @import 'types';
+@import 'variables';
 $text-color: #263238;
+.center {
+    color: #666;
+    text-align: center;
+}
+.classification {
+    color: $text-color;
+    font-size: 1.6rem;
+    margin-top: 30px;
+    text-align: center;
+}
 .pokemon-number {
     color: $text-color;
     font-size: 3.6rem;
@@ -17,12 +28,6 @@ $text-color: #263238;
     margin-top: 0;
     padding: 8px;
 }
-.classification {
-    color: $text-color;
-    font-size: 1.6rem;
-    margin-top: 30px;
-    text-align: center;
-}
 .pokemon-img {
     display: block;
     margin: 0 auto;
@@ -34,8 +39,4 @@ $text-color: #263238;
 }
 .type {
     font-size: 1.4rem;
-}
-.center {
-    color: #666;
-    text-align: center;
 }
