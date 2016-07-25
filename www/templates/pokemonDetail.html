@@ -235,7 +235,7 @@
                         <a href="#/pokemon/{{allPokemon[pokemon-1].number}} " ng-if="pokemonInfo.previousEvolutions ">
                             <div class="card " ng-if="pokemonInfo.previousEvolutions ">
                                 <div class="item item-divider ">
-                                    Previous Evolution
+                                    Previous Evolution ({{allPokemon[pokemon-1].name}})
                                 </div>
                                 <div class="item item-text-wrap row ">
                                     <div class="col col-50 ">
@@ -262,9 +262,9 @@
 
                     <div ng-repeat="pokemon in pokemonInfo.nextEvolutions ">
                         <a href="#/pokemon/{{ allPokemon[pokemon-1].number }} " ng-if="pokemonInfo.nextEvolutions ">
-                            <div class="card animated infinite tada ">
+                            <div class="card" ng-if="pokemonInfo.nextEvolutions ">
                                 <div class="item item-divider ">
-                                    Next Evolution
+                                    Next Evolution ({{allPokemon[pokemon-1].name}})
                                 </div>
                                 <div class="item item-text-wrap row ">
                                     <div class="col col-50 ">

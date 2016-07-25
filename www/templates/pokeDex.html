@@ -6,11 +6,11 @@
     <ion-content>
         <div class="row center" ng-repeat=" (key, image) in pokemon" ng-if="$index%3==0">
             <div class="col col-33">
-                <a href="#/pokemon/{{pokemon[key].number}}"><img src="../{{pokemon[key].img}}" alt="" /></a>
+                <a href="#/pokemon/{{pokemon[key].number}}"><img src="{{pokemon[key].img}}" alt="" /></a>
                 <p>{{ pokemon[key].name }}</p>
             </div>
             <div class="col col-33">
-                <a href="#/pokemon/{{pokemon[key+1].number}}"><img src="../{{pokemon[key+1].img}}" alt=""></a>
+                <a href="#/pokemon/{{pokemon[key+1].number}}"><img src="{{pokemon[key+1].img}}" alt=""></a>
                 <p>{{ pokemon[key+1].name }}</p>
             </div>
             <div class="col col-33">
