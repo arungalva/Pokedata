@@ -1,8 +1,4 @@
 {
   "name": "pokegodex",
-  "app_id": "",
-  "gulpStartupTasks": [
-    "sass",
-    "watch"
-  ]
+  "app_id": ""
 }
