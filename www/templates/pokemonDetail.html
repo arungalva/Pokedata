@@ -218,7 +218,10 @@
                         </div>
                     </ion-content>
                 </ion-slide>
-                <ion-slide ion-slide-tab-label="Evolutions">
+                <div ng-if="2>3">
+
+                </div>
+                <ion-slide ion-slide-tab-label="Evolutions" ng-if="pokemonInfo.nextEvolutions || pokemonInfo.previousEvolutions">
                     <ion-content class="padding ">
                         <div class="row " ng-if="pokemonInfo.nextEvolutionRequirements ">
                             <b>Candies till next evolution:&nbsp;</b> {{ pokemonInfo.nextEvolutionRequirements }}

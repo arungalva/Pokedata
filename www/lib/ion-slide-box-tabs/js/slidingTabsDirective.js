@@ -25,7 +25,7 @@ var slidingTabsDirective = angular.module("ionic").directive('ionSlideTabs', ['$
                     options.slideTabsScrollable = false;
                 }
 
-                var tabItems = '<li ng-repeat="(key, value) in tabs" ng-click="onTabTabbed($event, {{key}})" class="slider-slide-tab col col-25" ng-bind-html="value"></li>';
+                var tabItems = '<li ng-repeat="(key, value) in tabs" ng-click="onTabTabbed($event, {{key}})" class="slider-slide-tab" ng-class="{true:\'col col-50\', fase:\' col col-33 \'}[$index>2]" ng-bind-html="value"></li>';
 
                 if(options.slideTabsScrollable) {
 
@@ -145,7 +145,7 @@ var slidingTabsDirective = angular.module("ionic").directive('ionSlideTabs', ['$
                 if( !angular.isDefined(slideTabs) || slideTabs.length == 0 ) {
                     return false;
                 }
-
+                ionicSlideBoxDelegate.update()
                 var targetSlideIndex = ionicSlideBoxDelegate.currentIndex();
 
                 var targetTab = angular.element(slideTabs[targetSlideIndex]);
