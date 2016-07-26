@@ -17,7 +17,7 @@ angular.module('pokemon', ['ionic', 'pokemon.controllers', 'pokemon.services', '
     // Setting StatusBar background color in config.xml instead.
     if (window.StatusBar) {
       if (cordova.platformId == 'android') {
-        StatusBar.backgroundColorByHexString("#333");
+        // StatusBar.backgroundColorByHexString("#333");
       }
     }
   });
