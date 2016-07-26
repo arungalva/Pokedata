@@ -477,11 +477,13 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
 
           // Blur the input which will hide the keyboard.
           // Even if we need to bring in ionic.keyboard in the future, blur is preferred so keyboard animates out.
-          var hideKeyboard = function () {
-            if (isKeyboardShown) {
-              isKeyboardShown = false;
-              input && input.blur();
-            }
+          var hideKeyboard = function (time = 30) {
+           setTimeout(function () {
+             if (isKeyboardShown) {
+               isKeyboardShown = false;
+               input && input.blur();
+             }
+           }, time / 1000 + 100);
           };
 
           // When the filtered list is scrolled, we want to hide the keyboard as long as it's not already hidden
@@ -501,7 +503,9 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
           // Set isKeyboardShown to force showing keyboard on search focus.
           scope.focusInput = function () {
             isKeyboardShown = false;
-            showKeyboard();
+            $timeout(function() {
+              showKeyboard();
+            }, 240, false);
           };
 
           // Hide the filterBar backdrop if in the DOM and not already hidden.
@@ -575,9 +579,9 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
             scope.removed = true;
 
             //animate the filterBar out, hide keyboard and backdrop
-            ionic.requestAnimationFrame(function () {
+            ionic.requestAnimationFrame(function (timeLeft) {
+              hideKeyboard(timeLeft);
               filterWrapperEl.removeClass('filter-bar-in');
-              hideKeyboard();
               scope.hideBackdrop();
 
               //Wait before cleaning up so element isn't removed before filter bar animates out
