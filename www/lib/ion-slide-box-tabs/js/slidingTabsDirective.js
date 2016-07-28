@@ -20,7 +20,6 @@ var slidingTabsDirective = angular.module("ionic").directive('ionSlideTabs', ['$
 
 
             var init = function () {
-
                 if(angular.isDefined( attrs.slideTabsScrollable ) && attrs.slideTabsScrollable === "false" ) {
                     options.slideTabsScrollable = false;
                 }
@@ -145,13 +144,12 @@ var slidingTabsDirective = angular.module("ionic").directive('ionSlideTabs', ['$
                 if( !angular.isDefined(slideTabs) || slideTabs.length == 0 ) {
                     return false;
                 }
-                ionicSlideBoxDelegate.update()
                 var targetSlideIndex = ionicSlideBoxDelegate.currentIndex();
-
                 var targetTab = angular.element(slideTabs[targetSlideIndex]);
                 var targetLeftOffset = targetTab.prop("offsetLeft");
                 var targetWidth = targetTab[0].offsetWidth;
-
+                console.log(scope.tabs);
+                ionicSlideBoxDelegate.update();
 
 
                 indicator.css({
@@ -167,7 +165,6 @@ var slidingTabsDirective = angular.module("ionic").directive('ionSlideTabs', ['$
 
                 slideTabs.removeClass("tab-active");
                 targetTab.addClass("tab-active");
-
             }
 
 
