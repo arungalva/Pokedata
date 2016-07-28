@@ -45,7 +45,7 @@ angular.module('pokemon', ['ionic', 'pokemon.controllers', 'pokemon.services', '
 
 .config(function($ionicNativeTransitionsProvider) {
   $ionicNativeTransitionsProvider.setDefaultOptions({
-    duration: 300,
+    duration: 220,
     slowdownfactor: 4,
     iosdelay: -1,
     androiddelay: -1,
