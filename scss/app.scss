@@ -1,6 +1,7 @@
 @import 'overrides';
 @import 'pokemon-ui/pokemon';
 @import 'about/about';
+@import 'variables';
 html {
     font-size: $font-size-root;
 }
@@ -20,5 +21,20 @@ i {
     padding: 5px 7px;
 }
 .filter-bar-transition-horizontal {
-    transition: transform cubic-bezier(.25, .45, .05, 1) 250ms;
+    // transition: transform cubic-bezier(.25, .45, .05, 1) 250ms;
+}
+.slidingTabs {
+    ul {
+        background-color: $action-bar !important;
+    }
+    li {
+        font-size: 1.1rem !important;
+    }
+}
+.bar-assertive {
+    background-color: $action-bar !important;
+    border-color: $action-bar !important;
+}
+.slider-slides {
+    height: 95%;
 }
