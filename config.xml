@@ -3,7 +3,7 @@
     <name>PokéGoDex</name>
     <description>&#xD;PokéGoDex: All the info about Pokémon GO bundled into one mobile app&#xD;
     </description>
-    <author email="yeskunall96@gmail.com" href="#">&#xD; Arun Galva & Kunall Banerjee&#xD;
+    <author email="arungalva@gmail.com" href="https://github.com/arungalva/PokeGoDex">&#xD; Arun Galva &amp; Kunall Banerjee&#xD;
     </author>
     <content src="index.html"/>
     <access origin="*"/>
