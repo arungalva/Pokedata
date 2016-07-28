@@ -1,5 +1,5 @@
 {
-  "name": "pokegodex",
+  "name": "PokéGoDex",
   "version": "1.0.0",
   "description": "PokéGoDex: All the info about Pokémon GO bundled into one mobile app",
   "dependencies": {
@@ -19,5 +19,7 @@
     "ionic-plugin-keyboard",
     "cordova-plugin-statusbar"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    "android"
+  ]
 }
