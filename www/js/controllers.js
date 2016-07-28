@@ -22,11 +22,7 @@ angular.module('pokemon.controllers', [])
   .controller('pokemonDetailCtrl', function($scope, $ionicLoading, $stateParams, Pokemon, PokemonAttacks) {
 
     opts = {
-      content: 'Loading',
-      animation: 'fade-in',
-      showBackdrop: true,
-      maxWidth: 200,
-      showDelay: 0
+      template: '<span class="ion-load-c"></span>'
     };
 
     $scope.isListShown = function(attack) {
