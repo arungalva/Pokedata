@@ -33,8 +33,15 @@ i {
 }
 .bar-assertive {
     background-color: $action-bar !important;
-    border-color: $action-bar !important;
+    border-color: $pokeball-red !important;
 }
+/*
+  Quick fix for now
+  Need to find a real solution for the scroll issue soon!
+ */
 .slider-slides {
     height: 95%;
+}
+.right-buttons {
+  padding: 4.5px;
 }
