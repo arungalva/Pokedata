@@ -2,5 +2,8 @@ node_modules/
 scrape.py
 **/pokemon/
 **/pokemon.json
+**/attacks.json
 platforms/
-plugins/
+resources/
+plugins/**
+attacks.py

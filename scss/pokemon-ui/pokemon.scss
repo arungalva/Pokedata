@@ -1,0 +1,42 @@
+@import 'tabs/tabs';
+@import 'types';
+@import 'variables';
+$text-color: #263238;
+.center {
+    color: #666;
+    text-align: center;
+}
+.classification {
+    color: $text-color;
+    font-size: 1.6rem;
+    margin-top: 30px;
+    text-align: center;
+}
+.pokemon-number {
+    color: $text-color;
+    font-size: 3.6rem;
+    text-align: center;
+}
+.pokemon-info-main-right {
+    padding: 15% 30px 0;
+    text-align: center;
+}
+.pokemon-type-I {
+    border-radius: 20px;
+    color: #fff;
+    font-size: $font-size-base;
+    margin-top: 0;
+    padding: 8px;
+}
+.pokemon-img {
+    display: block;
+    margin: 0 auto;
+}
+.pokemon-info {
+    span {
+        font-weight: bold;
+    }
+}
+.type {
+    font-size: 1.4rem;
+}

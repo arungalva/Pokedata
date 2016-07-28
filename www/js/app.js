@@ -1,9 +1,4 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-angular.module('pokemon',['ionic', 'pokemon.controllers', 'pokemon.services','jett.ionic.filter.bar'])
+angular.module('pokemon', ['ionic', 'pokemon.controllers', 'pokemon.services', 'jett.ionic.filter.bar', 'ionic-native-transitions'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -17,25 +12,54 @@ angular.module('pokemon',['ionic', 'pokemon.controllers', 'pokemon.services','je
       // a much nicer keyboard experience.
       cordova.plugins.Keyboard.disableScroll(true);
     }
+
+    // NOTE: This is currently not working.
+    // Setting StatusBar background color in config.xml instead.
     if (window.StatusBar) {
-      StatusBar.styleDefault();
+      if (cordova.platformId == 'android') {
+        // StatusBar.backgroundColorByHexString("#333");
+      }
     }
   });
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-  .state('pokeDex', {
+    .state('pokeDex', {
       url: '/pokemon/',
       templateUrl: 'templates/pokeDex.html',
       controller: 'PokemonCtrl'
     })
-  .state('pokemon-detail', {
-    url: '/pokemon/:pokemonId',
-    templateUrl: 'templates/pokemonDetail.html',
-    controller: 'pokemonDetailCtrl'
-  });
-
+    .state('pokemon-detail', {
+      url: '/pokemon/:pokemonId',
+      templateUrl: 'templates/pokemonDetail.html',
+      controller: 'pokemonDetailCtrl'
+    })
+    .state('about', {
+      url: '/about',
+      templateUrl: 'templates/about.html'
+    });
   $urlRouterProvider.otherwise("/pokemon/");
 
+})
+
+.config(function($ionicNativeTransitionsProvider) {
+  $ionicNativeTransitionsProvider.setDefaultOptions({
+    duration: 220,
+    slowdownfactor: 4,
+    iosdelay: -1,
+    androiddelay: -1,
+    winphonedelay: -1,
+    fixedPixelsTop: 0,
+    fixedPixelsBottom: 0,
+    triggerTransitionEvent: '$ionicView.afterEnter',
+    backInOppositeDirection: false
+  });
+})
+
+// Capitalize the first letter of each word
+.filter('capitalize', function() {
+  return function(input) {
+    return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+  };
 });

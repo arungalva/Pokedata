@@ -1,0 +1,82 @@
+@import 'variables';
+.list {
+    .item.item-accordion {
+        transition: 0.09s all linear;
+    }
+}
+.right {
+    float: right;
+}
+table {
+    width: 100%;
+    td {
+        vertical-align: middle;
+    }
+    td:not(:first-child) {
+        padding: 1% 15px;
+    }
+    td:nth-child(even) {
+        float: right;
+        font-weight: 700;
+    }
+    td:nth-child(odd) {
+        float: left;
+    }
+}
+#sub {
+    font-size: 1.0rem;
+}
+.bug-type {
+    color: color($bug) !important;
+}
+.dark-type {
+    color: color($dark) !important;
+}
+.dragon-type {
+    color: color($dragon) !important;
+}
+.electric-type {
+    color: color($electric) !important;
+}
+.fairy-type {
+    color: color($fairy) !important;
+}
+.flying-type {
+    color: color($flying) !important;
+}
+.fighting-type {
+    color: color($fighting) !important;
+}
+.fire-type {
+    color: color($fire) !important;
+}
+.ghost-type {
+    color: color($ghost) !important;
+}
+.grass-type {
+    color: color($grass) !important;
+}
+.ground-type {
+    color: color($ground) !important;
+}
+.ice-type {
+    color: color($ice) !important;
+}
+.normal-type {
+    color: color($normal) !important;
+}
+.poison-type {
+    color: color($poison) !important;
+}
+.psychic-type {
+    color: color($psychic) !important;
+}
+.rock-type {
+    color: color($rock) !important;
+}
+.steel-type {
+    color: color($steel) !important;
+}
+.water-type {
+    color: color($water) !important;
+}

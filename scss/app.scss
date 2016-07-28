@@ -1,4 +1,47 @@
+@import 'overrides';
+@import 'pokemon-ui/pokemon';
+@import 'about/about';
+@import 'variables';
+html {
+    font-size: $font-size-root;
+}
 img {
-  max-width: 100%;
-  max-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+.view-container {
+    background: #eceff1 !important;
+}
+a {
+    color: currentColor;
+    text-decoration: none;
+}
+i {
+    font-size: 2.4rem;
+    padding: 5px 7px;
+}
+.filter-bar-transition-horizontal {
+    // transition: transform cubic-bezier(.25, .45, .05, 1) 250ms;
+}
+.slidingTabs {
+    ul {
+        background-color: $action-bar !important;
+    }
+    li {
+        font-size: 1.1rem !important;
+    }
+}
+.bar-assertive {
+    background-color: $action-bar !important;
+    border-color: $pokeball-red !important;
+}
+/*
+  Quick fix for now
+  Need to find a real solution for the scroll issue soon!
+ */
+.slider-slides {
+    height: 95%;
+}
+.right-buttons {
+  padding: 4.5px;
 }

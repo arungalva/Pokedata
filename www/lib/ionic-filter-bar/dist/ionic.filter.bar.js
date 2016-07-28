@@ -1,5 +1,5 @@
 angular.module('jett.ionic.filter.bar', ['ionic']);
-(function (angular, document) {
+(function(angular, document) {
   'use strict';
 
   angular.module('jett.ionic.filter.bar')
@@ -7,39 +7,39 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
       '$timeout',
       '$ionicGesture',
       '$ionicPlatform',
-      function ($timeout, $ionicGesture, $ionicPlatform) {
+      function($timeout, $ionicGesture, $ionicPlatform) {
         var filterBarTemplate;
 
         //create platform specific filterBar template using filterConfig items
         if ($ionicPlatform.is('android')) {
           filterBarTemplate =
             '<div class="filter-bar-wrapper filter-bar-{{::config.theme}} filter-bar-transition-{{::config.transition}}">' +
-              '<div class="bar bar-header bar-{{::config.theme}} item-input-inset">' +
-                '<button class="filter-bar-cancel button button-icon icon {{::config.back}}"></button>' +
-                '<label class="item-input-wrapper">' +
-                  '<input type="search" class="filter-bar-search" ng-model="data.filterText" placeholder="{{::config.placeholder}}" />' +
-                  '<button class="filter-bar-clear button button-icon icon" ng-class="getClearButtonClass()"></button>' +
-                '</label>' +
-              '</div>' +
+            '<div class="bar bar-header bar-{{::config.theme}} item-input-inset">' +
+            '<button class="filter-bar-cancel button button-icon icon {{::config.back}}"></button>' +
+            '<label class="item-input-wrapper">' +
+            '<input type="search" class="filter-bar-search" ng-model="data.filterText" placeholder="{{::config.placeholder}}" />' +
+            '<button class="filter-bar-clear button button-icon icon" ng-class="getClearButtonClass()"></button>' +
+            '</label>' +
+            '</div>' +
             '</div>';
         } else {
           filterBarTemplate =
             '<div class="filter-bar-wrapper filter-bar-{{::config.theme}} filter-bar-transition-{{::config.transition}}">' +
-              '<div class="bar bar-header bar-{{::config.theme}} item-input-inset">' +
-                '<label class="item-input-wrapper">' +
-                  '<i class="icon {{::config.search}} placeholder-icon"></i>' +
-                  '<input type="search" class="filter-bar-search" ng-model="data.filterText" placeholder="{{::config.placeholder}}"/>' +
-                  '<button class="filter-bar-clear button button-icon icon" ng-class="getClearButtonClass()"></button>' +
-                '</label>' +
-                '<button class="filter-bar-cancel button button-clear" ng-bind-html="::cancelText"></button>' +
-              '</div>' +
+            '<div class="bar bar-header bar-{{::config.theme}} item-input-inset">' +
+            '<label class="item-input-wrapper">' +
+            '<i class="icon {{::config.search}} placeholder-icon"></i>' +
+            '<input type="search" class="filter-bar-search" ng-model="data.filterText" placeholder="{{::config.placeholder}}"/>' +
+            '<button class="filter-bar-clear button button-icon icon" ng-class="getClearButtonClass()"></button>' +
+            '</label>' +
+            '<button class="filter-bar-cancel button button-clear" ng-bind-html="::cancelText"></button>' +
+            '</div>' +
             '</div>';
         }
 
         return {
           restrict: 'E',
           scope: true,
-          link: function ($scope, $element) {
+          link: function($scope, $element) {
             var el = $element[0];
             var clearEl = el.querySelector('.filter-bar-clear');
             var cancelEl = el.querySelector('.filter-bar-cancel');
@@ -52,7 +52,7 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
 
             // Action when filter bar is cancelled via backdrop click/swipe or cancel/back buton click.
             // Invokes cancel function defined in filterBar service
-            var cancelFilterBar = function () {
+            var cancelFilterBar = function() {
               $scope.cancelFilterBar();
             };
 
@@ -73,23 +73,23 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
 
             //Sure we could have had 1 function that also checked for favoritesEnabled.. but no need to keep checking a var that wont change
             if ($scope.favoritesEnabled) {
-              $scope.getClearButtonClass = function () {
+              $scope.getClearButtonClass = function() {
                 return $scope.data.filterText.length ? $scope.config.clear : $scope.config.favorite;
               }
             } else {
-              $scope.getClearButtonClass = function () {
+              $scope.getClearButtonClass = function() {
                 return $scope.data.filterText.length ? $scope.config.clear : 'filter-bar-element-hide';
               }
             }
 
             // When clear button is clicked, clear filterText, hide clear button, show backdrop, and focus the input
-            var clearClick = function () {
+            var clearClick = function() {
               if (clearEl.classList.contains($scope.config.favorite)) {
                 $scope.showModal();
               } else {
-                $timeout(function () {
+                $timeout(function() {
                   $scope.data.filterText = '';
-                  ionic.requestAnimationFrame(function () {
+                  ionic.requestAnimationFrame(function() {
                     $scope.showBackdrop();
                     $scope.scrollItemsTop();
                     $scope.focusInput();
@@ -99,7 +99,7 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
             };
 
             // Bind touchstart so we can regain focus of input even while scrolling
-            var inputClick = function () {
+            var inputClick = function() {
               $scope.scrollItemsTop();
               $scope.focusInput();
             };
@@ -128,7 +128,7 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
             document.addEventListener('keyup', keyUp);
 
             // Calls the services filterItems function with the filterText to filter items
-            var filterItems = function () {
+            var filterItems = function() {
               $scope.filterItems($scope.data.filterText);
             };
 
@@ -145,7 +145,7 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
             // Watch for changes on filterText and call filterItems when filterText has changed.
             // If debounce is enabled, filter items by the specified or default delay.
             // Prefer timeout debounce over ng-model-options so if filterText is cleared, initial items show up right away with no delay
-            filterWatch = $scope.$watch('data.filterText', function (newFilterText, oldFilterText) {
+            filterWatch = $scope.$watch('data.filterText', function(newFilterText, oldFilterText) {
               var delay;
 
               if (filterTextTimeout) {
@@ -160,7 +160,8 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
           },
           template: filterBarTemplate
         };
-      }]);
+      }
+    ]);
 
 })(angular, document);
 
@@ -168,11 +169,11 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
 /**
  * This copies the functionality of the ionicConfig provider to allow for platform specific configuration
  */
-(function (angular) {
+(function(angular) {
   'use strict';
 
   angular.module('jett.ionic.filter.bar')
-    .provider('$ionicFilterBarConfig', function () {
+    .provider('$ionicFilterBarConfig', function() {
 
       var provider = this;
       provider.platform = {};
@@ -318,32 +319,32 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
  * @module ionic
  * @description The Filter Bar is an animated bar that allows a user to search or filter an array of items.
  */
-(function (angular, ionic) {
+(function(angular, ionic) {
   'use strict';
 
   var filterBarModalTemplate =
     '<ion-modal-view ng-controller="$ionicFilterBarModalCtrl" class="filter-bar-modal">' +
     '<ion-header-bar class="bar bar-{{::config.theme}} disable-user-behavior">' +
-      '<button class="button button-icon {{::config.close}}" ng-click="closeModal()"></button>' +
-      '<h1 class="title" ng-bind-html="::favoritesTitle"></h1>' +
-      '<button ng-if="searches.length > 1" class="button button-icon" ng-class="displayData.showReorder ? config.done : config.reorder" ng-click="displayData.showReorder = !displayData.showReorder"></button>' +
+    '<button class="button button-icon {{::config.close}}" ng-click="closeModal()"></button>' +
+    '<h1 class="title" ng-bind-html="::favoritesTitle"></h1>' +
+    '<button ng-if="searches.length > 1" class="button button-icon" ng-class="displayData.showReorder ? config.done : config.reorder" ng-click="displayData.showReorder = !displayData.showReorder"></button>' +
     '</ion-header-bar>' +
     '<ion-content>' +
-      '<ion-list show-reorder="displayData.showReorder" delegate-handle="searches-list">' +
-        '<ion-item ng-repeat="item in searches" class="item-remove-animate" ng-class="{reordered: item.reordered}" ng-click="itemClicked(item.text, $event)">' +
-          '<span ng-bind-html="item.text"></span>' +
-          '<ion-option-button class="button-assertive icon {{::config.remove}}" ng-click="deleteItem(item)"></ion-option-button>' +
-          '<ion-reorder-button class="{{::config.reorder}}" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button>' +
-        '</ion-item>' +
-        '<div class="item item-input">' +
-          '<input type="text" ng-model="newItem.text" placeholder="{{::favoritesAddPlaceholder}}"/>' +
-          '<button class="button button-icon icon {{::config.add}}" ng-click="addItem(newItem)"></button>' +
-        '</div>' +
-      '</ion-list>' +
+    '<ion-list show-reorder="displayData.showReorder" delegate-handle="searches-list">' +
+    '<ion-item ng-repeat="item in searches" class="item-remove-animate" ng-class="{reordered: item.reordered}" ng-click="itemClicked(item.text, $event)">' +
+    '<span ng-bind-html="item.text"></span>' +
+    '<ion-option-button class="button-assertive icon {{::config.remove}}" ng-click="deleteItem(item)"></ion-option-button>' +
+    '<ion-reorder-button class="{{::config.reorder}}" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button>' +
+    '</ion-item>' +
+    '<div class="item item-input">' +
+    '<input type="text" ng-model="newItem.text" placeholder="{{::favoritesAddPlaceholder}}"/>' +
+    '<button class="button button-icon icon {{::config.add}}" ng-click="addItem(newItem)"></button>' +
+    '</div>' +
+    '</ion-list>' +
     '</ion-content> ' +
     '</ion-modal-view>';
 
-  var getNavBarTheme = function ($navBar) {
+  var getNavBarTheme = function($navBar) {
     var themes = ['light', 'stable', 'positive', 'calm', 'balanced', 'energized', 'assertive', 'royal', 'dark'];
     var classList = $navBar && $navBar.classList;
 
@@ -370,7 +371,7 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
       '$ionicConfig',
       '$ionicModal',
       '$ionicScrollDelegate',
-      function ($document, $rootScope, $compile, $timeout, $filter, $ionicPlatform, $ionicFilterBarConfig, $ionicConfig, $ionicModal, $ionicScrollDelegate) {
+      function($document, $rootScope, $compile, $timeout, $filter, $ionicPlatform, $ionicFilterBarConfig, $ionicConfig, $ionicModal, $ionicScrollDelegate) {
         var isShown = false;
         var $body = $document[0].body;
         var templateConfig = {
@@ -400,7 +401,7 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
          *
          * @returns {function} `hideFilterBar` A function which, when called, hides & cancels the filter bar.
          */
-        function filterBar (opts) {
+        function filterBar(opts) {
           //if filterBar is already shown return
           if (isShown) {
             return;
@@ -441,7 +442,9 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
             favoritesKey: 'ionic_filter_bar_favorites'
           }, opts);
 
-          scope.data = {filterText: ''};
+          scope.data = {
+            filterText: ''
+          };
 
           //if no custom theme was configured, get theme of containers bar-header
           if (!scope.config.theme) {
@@ -464,11 +467,13 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
           var $scrollContainer = canScroll ? scrollView.__container : null;
 
           var stateChangeListenDone = scope.cancelOnStateChange ?
-            $rootScope.$on('$stateChangeSuccess', function () { scope.cancelFilterBar(); }) :
+            $rootScope.$on('$stateChangeSuccess', function() {
+              scope.cancelFilterBar();
+            }) :
             angular.noop;
 
           // Focus the input which will show the keyboard.
-          var showKeyboard = function () {
+          var showKeyboard = function() {
             if (!isKeyboardShown) {
               isKeyboardShown = true;
               input && input.focus();
@@ -477,7 +482,7 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
 
           // Blur the input which will hide the keyboard.
           // Even if we need to bring in ionic.keyboard in the future, blur is preferred so keyboard animates out.
-          var hideKeyboard = function () {
+          var hideKeyboard = function() {
             if (isKeyboardShown) {
               isKeyboardShown = false;
               input && input.blur();
@@ -485,27 +490,31 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
           };
 
           // When the filtered list is scrolled, we want to hide the keyboard as long as it's not already hidden
-          var handleScroll = function () {
-            if (scrollView.__scrollTop > 0) {
+          var handleScroll = function() {
+            console.log(scrollView.__scrollTop);
+            //changed scrollView.__scrollTop > 0 to scrollView.__scrollTop==0
+            if (scrollView.__scrollTop === 0) {
               hideKeyboard();
             }
           };
 
           // Scrolls the list of items to the top via the scroll delegate
-          scope.scrollItemsTop = function () {
+          scope.scrollItemsTop = function() {
             if (canScroll && scrollView.__scrollTop > 0 && scope.scrollDelegate.scrollTop) {
               scope.scrollDelegate.scrollTop();
             }
           };
 
           // Set isKeyboardShown to force showing keyboard on search focus.
-          scope.focusInput = function () {
+          scope.focusInput = function() {
             isKeyboardShown = false;
-            showKeyboard();
+            $timeout(function() {
+              showKeyboard();
+            }, 100, false);
           };
 
           // Hide the filterBar backdrop if in the DOM and not already hidden.
-          scope.hideBackdrop = function () {
+          scope.hideBackdrop = function() {
             if (backdropEl.length && backdropShown) {
               backdropShown = false;
               backdropEl.removeClass('active').css('display', 'none');
@@ -513,14 +522,14 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
           };
 
           // Show the filterBar backdrop if in the DOM and not already shown.
-          scope.showBackdrop = function () {
+          scope.showBackdrop = function() {
             if (backdropEl.length && !backdropShown) {
               backdropShown = true;
               backdropEl.css('display', 'block').addClass('active');
             }
           };
 
-          scope.showModal = function () {
+          scope.showModal = function() {
             scope.modal = $ionicModal.fromTemplate(filterBarModalTemplate, {
               scope: scope
             });
@@ -542,7 +551,7 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
                 filterExp = angular.bind(this, scope.expression, filterText);
               } else if (angular.isArray(scope.filterProperties)) {
                 filterExp = {};
-                angular.forEach(scope.filterProperties, function (property) {
+                angular.forEach(scope.filterProperties, function(property) {
                   filterExp[property] = filterText;
                 });
               } else if (scope.filterProperties) {
@@ -575,13 +584,13 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
             scope.removed = true;
 
             //animate the filterBar out, hide keyboard and backdrop
-            ionic.requestAnimationFrame(function () {
+            // ionic.requestAnimationFrame(function() {
               filterWrapperEl.removeClass('filter-bar-in');
               hideKeyboard();
               scope.hideBackdrop();
 
               //Wait before cleaning up so element isn't removed before filter bar animates out
-              $timeout(function () {
+              $timeout(function() {
                 scope.scrollItemsTop();
                 scope.update(scope.items);
 
@@ -591,9 +600,9 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
                 isShown = false;
                 (done || angular.noop)();
               }, 350);
-            });
+            // });
 
-            $timeout(function () {
+            $timeout(function() {
               // wait to remove this due to a 300ms delay native
               // click which would trigging whatever was underneath this
               scope.container.classList.remove('filter-bar-open');
@@ -619,10 +628,10 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
             scope.scrollItemsTop();
 
             //start filterBar animation, show backrop and focus the input
-            ionic.requestAnimationFrame(function () {
+            ionic.requestAnimationFrame(function() {
               if (scope.removed) return;
 
-              $timeout(function () {
+              $timeout(function() {
                 filterWrapperEl.addClass('filter-bar-in');
                 scope.focusInput();
                 scope.showBackdrop();
@@ -652,13 +661,14 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
         return {
           show: filterBar
         };
-      }]);
+      }
+    ]);
 
 
 })(angular, ionic);
 
 /* global angular */
-(function (angular) {
+(function(angular) {
   'use strict';
 
   angular.module('jett.ionic.filter.bar')
@@ -667,19 +677,23 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
       '$scope',
       '$timeout',
       '$ionicListDelegate',
-      function ($window, $scope, $timeout, $ionicListDelegate) {
+      function($window, $scope, $timeout, $ionicListDelegate) {
         var searchesKey = $scope.$parent.favoritesKey;
 
-        $scope.displayData = {showReorder: false};
+        $scope.displayData = {
+          showReorder: false
+        };
         $scope.searches = angular.fromJson($window.localStorage.getItem(searchesKey)) || [];
-        $scope.newItem = {text: ''};
+        $scope.newItem = {
+          text: ''
+        };
 
         $scope.moveItem = function(item, fromIndex, toIndex) {
           item.reordered = true;
           $scope.searches.splice(fromIndex, 1);
           $scope.searches.splice(toIndex, 0, item);
 
-          $timeout(function () {
+          $timeout(function() {
             delete item.reordered;
           }, 500);
         };
@@ -689,7 +703,7 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
           $scope.searches.splice(index, 1);
         };
 
-        $scope.addItem = function () {
+        $scope.addItem = function() {
           if ($scope.newItem.text) {
             $scope.searches.push({
               text: $scope.newItem.text
@@ -698,12 +712,12 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
           }
         };
 
-        $scope.closeModal = function () {
+        $scope.closeModal = function() {
           $window.localStorage.setItem(searchesKey, angular.toJson($scope.searches));
           $scope.$parent.modal.remove();
         };
 
-        $scope.itemClicked = function (filterText, $event) {
+        $scope.itemClicked = function(filterText, $event) {
           var isOptionButtonsClosed = !!$event.currentTarget.querySelector('.item-options.invisible');
 
           if (isOptionButtonsClosed) {
@@ -716,6 +730,7 @@ angular.module('jett.ionic.filter.bar', ['ionic']);
           }
         };
 
-      }]);
+      }
+    ]);
 
 })(angular);
