@@ -6,7 +6,7 @@
     <ion-pane>
         <ion-content scroll="false">
             <ion-slide-box show-pager="false" ion-slide-tabs>
-                <ion-slide ion-slide-tab-label="Pokemon">
+                <ion-slide ion-slide-tab-label="Pokémon">
                     <ion-content>
                         <div class="row pokemon-info-main">
                             <div class="col col-50">
@@ -218,19 +218,17 @@
                         </div>
                     </ion-content>
                 </ion-slide>
-                <div ng-if="2>3">
 
-                </div>
                 <ion-slide ion-slide-tab-label="Evolutions" ng-if="pokemonInfo.nextEvolutions || pokemonInfo.previousEvolutions">
                     <ion-content class="padding ">
                         <div class="row " ng-if="pokemonInfo.nextEvolutionRequirements ">
                             <b>Candies till next evolution:&nbsp;</b> {{ pokemonInfo.nextEvolutionRequirements }}
                         </div>
                         <div ng-repeat="pokemon in pokemonInfo.previousEvolutions ">
-                            <a href="#/pokemon/{{allPokemon[pokemon-1].number}} " ng-if="pokemonInfo.previousEvolutions ">
+                            <a href="#/pokemon/{{ allPokemon[pokemon-1].number }} " ng-if="pokemonInfo.previousEvolutions ">
                                 <div class="card " ng-if="pokemonInfo.previousEvolutions ">
                                     <div class="item item-divider ">
-                                        Previous Evolution ({{allPokemon[pokemon-1].name}})
+                                        Previous Evolution
                                     </div>
                                     <div class="item item-text-wrap row ">
                                         <div class="col col-50 ">
@@ -259,7 +257,7 @@
                             <a href="#/pokemon/{{ allPokemon[pokemon-1].number }} " ng-if="pokemonInfo.nextEvolutions ">
                                 <div class="card" ng-if="pokemonInfo.nextEvolutions ">
                                     <div class="item item-divider ">
-                                        Next Evolution ({{allPokemon[pokemon-1].name}})
+                                        Next Evolution
                                     </div>
                                     <div class="item item-text-wrap row ">
                                         <div class="col col-50 ">
