@@ -1,20 +1,20 @@
 {
-    "name": "PokeGoDex",
+    "name": "Pokédata",
     "version": "1.0.0",
-    "description": "PokéGoDex: All the info about Pokémon GO bundled into one mobile app",
+    "description": "Pokédata: All the info about Pokémon GO bundled into one mobile app",
     "dependencies": {
         "gulp": "^3.5.6",
         "gulp-concat": "^2.2.0"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/arungalva/PokeGoDex.git"
+        "url": "git+https://github.com/arungalva/Pokedata.git"
     },
     "author": "Arun Galva & Kunall Banerjee",
     "bugs": {
-        "url": "https://github.com/arungalva/PokeGoDex/issues"
+        "url": "https://github.com/arungalva/Pokedata/issues"
     },
-    "homepage": "https://github.com/arungalva/PokeGoDex#readme",
+    "homepage": "https://github.com/arungalva/Pokedata#readme",
     "devDependencies": {
         "bower": "^1.3.3",
         "gulp-clean-css": "^2.0.11",
