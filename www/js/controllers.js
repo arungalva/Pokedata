@@ -2,7 +2,7 @@ angular.module('pokemon.controllers', [])
   .controller('PokemonCtrl', function($scope, Pokemon, $ionicFilterBar) {
     images = [];
     $scope.allPokemon = [];
-    $scope.title = "PokéGoDex";
+    $scope.title = "Pokédata";
     Pokemon.all().then(function(response) {
       images = response.data;
       $scope.pokemon = images;
